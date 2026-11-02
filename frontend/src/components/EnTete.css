@@ -1,0 +1,18 @@
+.en-tete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 8px 0 20px;
+}
+
+.en-tete-profil {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--ligne-forte);
+  background: var(--blanc);
+  color: var(--prune);
+}

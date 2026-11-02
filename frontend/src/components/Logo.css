@@ -1,0 +1,17 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-nom {
+  font-family: "Fraunces Variable", Georgia, serif;
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--prune);
+}
+
+.logo-nom em {
+  font-weight: 400;
+  color: var(--rose);
+}

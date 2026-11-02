@@ -1,0 +1,16 @@
+.carte-fiche {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.carte-fiche-titre {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--prune);
+}
+
+.carte-fiche-resume {
+  font-size: 14px;
+  color: var(--texte-2);
+}

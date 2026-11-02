@@ -1,0 +1,49 @@
+.barre-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  width: 100%;
+  max-width: 480px;
+  height: calc(var(--hauteur-nav) + env(safe-area-inset-bottom));
+  padding: 6px 4px calc(10px + env(safe-area-inset-bottom));
+  background: var(--blanc);
+  border-top: 1px solid var(--ligne);
+  z-index: 10;
+}
+
+.onglet {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--gris);
+}
+
+.onglet-pastille {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 30px;
+  border-radius: 999px;
+}
+
+.onglet-libelle {
+  font-size: 12px;
+}
+
+.onglet.actif {
+  color: var(--rose-fonce);
+}
+
+.onglet.actif .onglet-pastille {
+  background: var(--poudre);
+}
+
+.onglet.actif .onglet-libelle {
+  font-weight: 700;
+  color: var(--prune);
+}

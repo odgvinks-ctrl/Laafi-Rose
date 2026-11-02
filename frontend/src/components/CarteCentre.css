@@ -1,0 +1,16 @@
+.carte-centre {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.carte-centre-nom {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--prune);
+}
+
+.carte-centre-type {
+  font-size: 14px;
+  color: var(--gris);
+}

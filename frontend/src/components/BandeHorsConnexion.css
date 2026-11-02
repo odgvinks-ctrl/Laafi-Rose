@@ -1,0 +1,9 @@
+.bande-hors-connexion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--prune);
+  color: var(--fond);
+  font-size: 13px;
+}
