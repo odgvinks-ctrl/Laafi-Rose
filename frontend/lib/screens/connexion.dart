@@ -33,9 +33,17 @@ class _EcranConnexionState extends State<EcranConnexion> {
       _erreur = '';
     });
     try {
-      await context.read<Session>().connecter(_telephone.text, _motDePasse.text);
-      if (mounted) context.go('/');
+      final chiffres = _telephone.text.replaceAll(' ', '');
+      final numero = chiffres.startsWith('+') ? chiffres : '+226$chiffres';
+      await context.read<Session>().connecter(numero, _motDePasse.text);
+      if (!mounted) return;
+      if (context.canPop()) {
+        context.pop();
+      } else {
+        context.go('/');
+      }
     } catch (e) {
+      if (!mounted) return;
       setState(() => _erreur = e.toString());
     } finally {
       if (mounted) setState(() => _chargement = false);

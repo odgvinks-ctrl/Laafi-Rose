@@ -41,7 +41,17 @@ GoRouter construireRouteur(Preferences preferences) {
         builder: (context, state, shell) => CoquilleNavigation(shell: shell),
         branches: [
           StatefulShellBranch(routes: [GoRoute(path: '/', builder: (context, state) => const EcranAccueil())]),
-          StatefulShellBranch(routes: [GoRoute(path: '/sinformer', builder: (context, state) => const EcranSinformer())]),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/sinformer',
+                builder: (context, state) {
+                  final recherche = state.uri.queryParameters['q'];
+                  return EcranSinformer(key: ValueKey(recherche), recherche: recherche);
+                },
+              ),
+            ],
+          ),
           StatefulShellBranch(routes: [GoRoute(path: '/centres', builder: (context, state) => const EcranCentres())]),
           StatefulShellBranch(routes: [GoRoute(path: '/assistant', builder: (context, state) => const EcranAssistant())]),
           StatefulShellBranch(routes: [GoRoute(path: '/enregistres', builder: (context, state) => const EcranEnregistres())]),
