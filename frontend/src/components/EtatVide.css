@@ -1,0 +1,33 @@
+.etat-vide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 36px 16px;
+  text-align: center;
+}
+
+.etat-vide-icone {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: var(--poudre);
+  color: var(--rose-fonce);
+}
+
+.etat-vide h2 {
+  font-size: 1.125rem;
+  color: var(--prune);
+}
+
+.etat-vide p {
+  max-width: 420px;
+  color: var(--texte-2);
+}
+
+.etat-vide .btn-principal,
+.etat-vide .btn-secondaire {
+  margin-top: 8px;
+}

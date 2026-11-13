@@ -1,0 +1,51 @@
+.sinformer-entete {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sinformer-entete .btn-secondaire {
+  align-self: flex-start;
+}
+
+.sinformer-filtres {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0 16px;
+}
+
+.sinformer-compte {
+  margin: 16px 0 10px;
+}
+
+.sinformer-squelette {
+  height: 132px;
+}
+
+.tourne {
+  animation: tourne 1s linear infinite;
+}
+
+@keyframes tourne {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 760px) {
+  .sinformer-entete {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .sinformer-filtres {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .sinformer-filtres .recherche {
+    flex: 0 0 340px;
+  }
+}

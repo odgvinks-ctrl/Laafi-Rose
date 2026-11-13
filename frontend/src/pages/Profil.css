@@ -1,0 +1,99 @@
+.profil-compte {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profil-compte .btn-secondaire,
+.profil-compte .btn-principal {
+  align-self: flex-start;
+}
+
+.profil-identite {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profil-identite strong {
+  font-size: 1.0625rem;
+  color: var(--prune);
+}
+
+.profil-avatar {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--poudre);
+  color: var(--rose-fonce);
+}
+
+.profil-sous-titre {
+  padding-top: 12px;
+  border-top: 1px solid var(--ligne);
+  font-weight: 700;
+  color: var(--prune);
+}
+
+.profil-demandes {
+  display: flex;
+  flex-direction: column;
+}
+
+.profil-demandes a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ligne);
+}
+
+.profil-demandes a > span:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.profil-demandes strong {
+  color: var(--prune);
+}
+
+.profil-wifi {
+  margin-top: 12px;
+}
+
+.profil-wifi > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.profil-liens {
+  padding: 4px 16px;
+}
+
+.profil-liens li + li {
+  border-top: 1px solid var(--ligne);
+}
+
+.profil-liens a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  color: var(--prune);
+}
+
+.profil-liens a svg:first-child {
+  color: var(--rose-fonce);
+}
+
+.profil-liens a svg:last-child {
+  margin-left: auto;
+  color: var(--gris);
+}
+
+.profil-confidentialite {
+  margin-top: 28px;
+}

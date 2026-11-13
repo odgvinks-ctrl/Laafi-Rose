@@ -1,0 +1,35 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-embleme {
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.logo-texte {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.logo-nom {
+  font-family: "Nunito Variable", system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--prune-logo);
+}
+
+.logo-nom em {
+  font-style: normal;
+  color: var(--rose-vif);
+}
+
+.logo-devise {
+  margin-top: 4px;
+  font-size: 0.6875rem;
+  color: var(--texte-2);
+  white-space: nowrap;
+}

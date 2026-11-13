@@ -1,0 +1,125 @@
+.journal-entete {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.journal-entete .btn-principal {
+  align-self: flex-start;
+}
+
+.journal-bloc {
+  margin-top: 20px;
+}
+
+.journal-lien {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.journal-formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.journal-formulaire-haut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.journal-formulaire h2 {
+  font-size: 1.125rem;
+  color: var(--prune);
+}
+
+.journal-fermer {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--sable);
+  cursor: pointer;
+}
+
+.journal-curseur {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.journal-curseur strong {
+  color: var(--rose-fonce);
+}
+
+.journal-curseur input {
+  width: 100%;
+  accent-color: var(--rose);
+}
+
+.journal-formulaire .btn-principal {
+  margin-top: 8px;
+}
+
+.journal-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.journal-entree {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.journal-entree.inquietant {
+  border-color: var(--rouge);
+}
+
+.journal-entree strong {
+  color: var(--prune);
+}
+
+.journal-entree p {
+  font-size: 0.9375rem;
+  color: var(--texte-2);
+}
+
+.journal-supprimer {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gris);
+  cursor: pointer;
+}
+
+.journal-supprimer:hover {
+  background: var(--rouge-fond);
+  color: var(--rouge);
+}
+
+@media (min-width: 640px) {
+  .journal-entete {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .journal-entete .btn-principal {
+    align-self: auto;
+    flex-shrink: 0;
+  }
+}

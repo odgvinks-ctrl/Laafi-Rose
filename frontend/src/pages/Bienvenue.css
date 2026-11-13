@@ -1,0 +1,119 @@
+.bienvenue {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bienvenue-visuel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 28px 20px 20px;
+  background: radial-gradient(circle at 50% 30%, var(--blanc) 0%, var(--voile) 55%, var(--poudre) 100%);
+  text-align: center;
+}
+
+.bienvenue-logo {
+  width: min(260px, 70vw);
+  height: auto;
+}
+
+.bienvenue-citation {
+  font-size: 0.875rem;
+  color: var(--texte-2);
+}
+
+.bienvenue-citation em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--rose-fonce);
+}
+
+.bienvenue-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+}
+
+.bienvenue-piliers {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 8px 0;
+}
+
+.bienvenue-piliers li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.bienvenue-piliers li > span:last-child {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9375rem;
+  color: var(--texte-2);
+}
+
+.bienvenue-piliers strong {
+  font-family: "Nunito Variable", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--prune);
+}
+
+.bienvenue-pilier-icone {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--poudre);
+  color: var(--rose-fonce);
+}
+
+.bienvenue-label {
+  font-weight: 700;
+  color: var(--prune);
+}
+
+.bienvenue-bouton {
+  margin-top: 8px;
+}
+
+.bienvenue-note {
+  text-align: center;
+}
+
+@media (min-width: 960px) {
+  .bienvenue {
+    flex-direction: row;
+  }
+
+  .bienvenue-visuel {
+    flex: 1;
+    min-height: 100dvh;
+    padding: 64px;
+  }
+
+  .bienvenue-logo {
+    width: min(460px, 80%);
+  }
+
+  .bienvenue-citation {
+    font-size: 1rem;
+  }
+
+  .bienvenue-contenu {
+    flex: 1;
+    justify-content: center;
+    padding: 64px;
+  }
+}

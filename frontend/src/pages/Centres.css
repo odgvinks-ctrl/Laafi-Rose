@@ -1,0 +1,29 @@
+.centres-filtres {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0 16px;
+}
+
+.centres-liste {
+  margin-top: 16px;
+}
+
+.centres-squelette {
+  height: 150px;
+}
+
+.centres-compte {
+  margin: 16px 0 10px;
+}
+
+@media (min-width: 760px) {
+  .centres-filtres {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .centres-filtres .recherche {
+    flex: 0 0 380px;
+  }
+}

@@ -1,0 +1,105 @@
+.rdv-squelette {
+  height: 520px;
+}
+
+.rdv .page-titre {
+  margin-top: 4px;
+}
+
+.rdv-formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.rdv-formulaire fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 0 20px;
+  border: 0;
+  border-bottom: 1px solid var(--ligne);
+}
+
+.rdv-formulaire legend {
+  margin-bottom: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rose-fonce);
+}
+
+.rdv-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 12px 14px;
+  border: 1px solid var(--ligne-forte);
+  border-radius: 14px;
+  background: var(--blanc);
+  cursor: pointer;
+}
+
+.rdv-option.actif {
+  border: 2px solid var(--rose);
+  background: var(--voile);
+}
+
+.rdv-option input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--rose);
+}
+
+.rdv-option > span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+}
+
+.rdv-option strong {
+  color: var(--prune);
+}
+
+.rdv-confirmation {
+  text-align: center;
+}
+
+.rdv-sablier {
+  display: grid;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+  margin: 24px auto 20px;
+  border-radius: 999px;
+  background: var(--ambre-fond);
+  color: var(--ambre);
+}
+
+.rdv-reference {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 24px 0;
+}
+
+.rdv-reference strong {
+  font-family: "Nunito Variable", system-ui, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--prune);
+  user-select: all;
+}
+
+.rdv-fin {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}

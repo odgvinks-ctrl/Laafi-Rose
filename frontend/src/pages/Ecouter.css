@@ -1,0 +1,97 @@
+.ecouter-squelette {
+  height: 360px;
+}
+
+.ecouter .page-titre {
+  margin-top: 4px;
+}
+
+.ecouter-bloc {
+  margin-top: 20px;
+}
+
+.ecouter-lecteur {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 20px;
+}
+
+.ecouter-progression {
+  width: 100%;
+  accent-color: var(--rose);
+}
+
+.ecouter-temps {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--gris);
+}
+
+.ecouter-commandes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 4px;
+}
+
+.ecouter-lecture {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--rose);
+  color: var(--blanc);
+  cursor: pointer;
+}
+
+.ecouter-lecture:hover {
+  background: var(--rose-fonce);
+}
+
+.ecouter-petit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--voile);
+  color: var(--prune);
+  cursor: pointer;
+}
+
+.ecouter-petit span {
+  position: absolute;
+  font-size: 0.5625rem;
+  font-weight: 700;
+}
+
+.ecouter-vitesse {
+  align-self: center;
+}
+
+.ecouter-enregistre {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--vert);
+}
+
+.ecouter-note {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.ecouter-texte {
+  white-space: pre-line;
+  line-height: 1.7;
+  color: var(--texte-2);
+}

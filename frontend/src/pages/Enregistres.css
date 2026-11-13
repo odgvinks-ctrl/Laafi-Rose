@@ -1,0 +1,73 @@
+.enregistres-espace {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--sable);
+  font-size: 0.875rem;
+  color: var(--texte-2);
+}
+
+.enregistres-audio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.enregistres-audio-lien {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.enregistres-audio-lien > span:last-child {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.enregistres-audio-lien strong {
+  color: var(--prune);
+}
+
+.enregistres-audio-icone {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--poudre);
+  color: var(--rose-fonce);
+}
+
+.enregistres-poubelle {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gris);
+  cursor: pointer;
+}
+
+.enregistres-poubelle:hover {
+  background: var(--rouge-fond);
+  color: var(--rouge);
+}
+
+.enregistres-confirmer {
+  flex-shrink: 0;
+  display: flex;
+}
+
+.enregistres-confirmer .enregistres-supprimer {
+  color: var(--rouge);
+}

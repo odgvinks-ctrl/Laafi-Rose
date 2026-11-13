@@ -1,0 +1,90 @@
+.centre-squelette {
+  height: 420px;
+}
+
+.centre-badges {
+  margin-top: 12px;
+}
+
+.centre-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.centre-actions .btn-secondaire {
+  flex: 1;
+  min-width: 140px;
+}
+
+.centre-rdv {
+  flex-basis: 100%;
+}
+
+.centre-services {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.centre-services li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.centre-services strong {
+  color: var(--prune);
+}
+
+.centre-services p {
+  font-size: 0.875rem;
+  color: var(--texte-2);
+}
+
+.centre-services .centre-indispo {
+  color: var(--rouge);
+}
+
+.centre-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.centre-info {
+  display: flex;
+  gap: 12px;
+}
+
+.centre-info svg {
+  flex-shrink: 0;
+  color: var(--rose-fonce);
+}
+
+.centre-maj {
+  padding-top: 12px;
+  border-top: 1px solid var(--ligne);
+}
+
+@media (min-width: 1100px) {
+  .centre-grille {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 40px;
+  }
+
+  .centre-infos {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    margin-top: 0;
+  }
+
+  .centre-rdv {
+    flex-basis: auto;
+  }
+}

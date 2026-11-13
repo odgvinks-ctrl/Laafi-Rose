@@ -1,0 +1,49 @@
+.suivi-squelette {
+  height: 320px;
+}
+
+.suivi {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.suivi-icone {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-top: 12px;
+  border-radius: 999px;
+}
+
+.suivi-ambre {
+  background: var(--ambre-fond);
+  color: var(--ambre);
+}
+
+.suivi-vert {
+  background: var(--vert-fond);
+  color: var(--vert);
+}
+
+.suivi-rouge {
+  background: var(--rouge-fond);
+  color: var(--rouge);
+}
+
+.suivi-carte {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.suivi-carte strong {
+  font-family: "Nunito Variable", system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--prune);
+}

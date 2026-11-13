@@ -1,0 +1,60 @@
+.notifications-entete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.notifications-liste {
+  margin-top: 20px;
+}
+
+.notifications-squelette {
+  height: 88px;
+}
+
+.notification {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.notification.non-lue {
+  border-color: var(--poudre);
+  background: var(--voile);
+}
+
+.notification-icone {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--poudre);
+  color: var(--rose-fonce);
+}
+
+.notification-corps {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.notification-corps strong {
+  color: var(--prune);
+}
+
+.notification.non-lue strong::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 8px;
+  border-radius: 999px;
+  background: var(--rose);
+  vertical-align: middle;
+}
