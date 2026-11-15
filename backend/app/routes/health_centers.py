@@ -80,10 +80,18 @@ def update_center(center_id: int, data: HealthCenterUpdate, db: Session = Depend
     check_manager(user, center_id)
     center = get_or_404(db, center_id)
     values = data.model_dump(exclude_unset=True)
+
+    if user.role.code != "admin" and "verified" in values:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Seul un administrateur peut modifier le statut de verification du centre.",
+        )
+
     for key, value in values.items():
         setattr(center, key, value)
-    if values.get("verified"):
-        center.verified_at = now()
+
+    if "verified" in values:
+        center.verified_at = now() if values["verified"] else None
     db.commit()
     db.refresh(center)
     return to_out(center)

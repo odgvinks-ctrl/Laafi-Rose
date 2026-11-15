@@ -49,7 +49,14 @@ def create_staff(data: StaffCreate, db: Session = Depends(get_db), _: User = Dep
     phone = data.phone.replace(" ", "")
     if db.query(User).filter(User.phone == phone).first():
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Ce numéro est déjà utilisé.")
-    role = db.query(Role).filter(Role.code == data.role).first()
+    role_code = "soignant" if data.role == "medecin" else data.role
+    role = db.query(Role).filter(Role.code == role_code).first()
+
+    if role is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="R?le non reconnu.",
+        )
     user = User(phone=phone, password_hash=hash_password(data.password), role=role, health_center_id=data.health_center_id)
     user.profile = Profile(first_name=data.first_name, last_name=data.last_name)
     db.add(user)

@@ -20,10 +20,7 @@ STATUS_MESSAGES = {
 def optional_user(token: str | None = Depends(optional_token), db: Session = Depends(get_db)) -> User | None:
     if not token:
         return None
-    try:
-        return get_current_user(token, db)
-    except HTTPException:
-        return None
+    return get_current_user(token, db)
 
 
 @router.post("/", response_model=AppointmentOut, status_code=status.HTTP_201_CREATED)

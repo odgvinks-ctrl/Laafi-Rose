@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, computed_field, field_validator
 
 from app.schemas.common import Orm
 
@@ -38,10 +38,36 @@ class UserOut(Orm):
     id: int
     phone: str
     email: Optional[str]
-    role: RoleOut
+    role: str
     health_center_id: Optional[int]
     profile: Optional[ProfileOut]
     created_at: datetime
+
+    @field_validator("role", mode="before")
+    @classmethod
+    def normalize_role(cls, value):
+        code = getattr(value, "code", None)
+
+        if code is None and isinstance(value, dict):
+            code = value.get("code")
+
+        mapping = {
+            "utilisateur": "patient",
+            "soignant": "medecin",
+        }
+
+        return mapping.get(code, code if code is not None else value)
+
+    @computed_field
+    @property
+    def full_name(self) -> str:
+        if self.profile is None:
+            return ""
+
+        parts = [self.profile.first_name, self.profile.last_name]
+        return " ".join(
+            part.strip() for part in parts if part and part.strip()
+        )
 
 
 class StaffCreate(BaseModel):
@@ -49,5 +75,5 @@ class StaffCreate(BaseModel):
     password: str = Field(min_length=8)
     first_name: str
     last_name: Optional[str] = None
-    role: Literal["soignant", "centre", "admin"]
+    role: Literal["soignant", "medecin", "centre", "admin"]
     health_center_id: Optional[int] = None

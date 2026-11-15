@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
 
 from app.schemas.common import Orm
 
@@ -12,6 +12,21 @@ class ServiceIn(BaseModel):
     description: Optional[str] = None
     is_free: bool = False
     available: bool = True
+
+
+class ServiceUpdate(BaseModel):
+    name: Optional[str] = None
+    category: Optional[str] = None
+    description: Optional[str] = None
+    is_free: Optional[bool] = None
+    available: Optional[bool] = None
+
+    @model_validator(mode="after")
+    def validate_non_nullable_fields(self):
+        for field in ("name", "category", "is_free", "available"):
+            if field in self.model_fields_set and getattr(self, field) is None:
+                raise ValueError(f"{field} ne peut pas etre null.")
+        return self
 
 
 class ServiceOut(Orm):

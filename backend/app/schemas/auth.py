@@ -1,15 +1,19 @@
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field
 
 
 class LoginIn(BaseModel):
-    phone: str
+    phone: str = Field(validation_alias=AliasChoices("phone", "telephone"))
     password: str
 
 
 class RegisterIn(BaseModel):
-    phone: str = Field(min_length=8, max_length=20)
+    phone: str = Field(
+        min_length=8,
+        max_length=20,
+        validation_alias=AliasChoices("phone", "telephone"),
+    )
     password: str = Field(min_length=8)
     first_name: str = Field(min_length=1, max_length=60)
     last_name: Optional[str] = None

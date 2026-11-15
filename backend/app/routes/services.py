@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.core.security import require_roles
 from app.models import Service, User
-from app.schemas.health_center import ServiceIn, ServiceOut
+from app.schemas.health_center import ServiceOut, ServiceUpdate
 
 router = APIRouter()
 
@@ -15,13 +15,20 @@ def categories(db: Session = Depends(get_db)):
 
 
 @router.patch("/{service_id}", response_model=ServiceOut)
-def update_service(service_id: int, data: ServiceIn, db: Session = Depends(get_db), user: User = Depends(require_roles("admin", "centre"))):
+def update_service(service_id: int, data: ServiceUpdate, db: Session = Depends(get_db), user: User = Depends(require_roles("admin", "centre"))):
     service = db.get(Service, service_id)
     if not service:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Service introuvable.")
     if user.role.code != "admin" and user.health_center_id != service.health_center_id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Accès non autorisé.")
-    for key, value in data.model_dump().items():
+    values = data.model_dump(exclude_unset=True)
+    if not values:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Aucune modification fournie.",
+        )
+
+    for key, value in values.items():
         setattr(service, key, value)
     db.commit()
     db.refresh(service)

@@ -20,7 +20,8 @@ def send_sms(phone: str, text: str) -> bool:
     if not phone:
         return False
     if SMS_PROVIDER == "console" or not SMS_API_URL:
-        logger.warning("SMS vers %s : %s", phone, text)
+        masked = f"***{phone[-4:]}" if len(phone) >= 4 else "***"
+        logger.info("SMS simulé vers %s (contenu masqué).", masked)
         return True
     try:
         httpx.post(
@@ -31,7 +32,8 @@ def send_sms(phone: str, text: str) -> bool:
         ).raise_for_status()
         return True
     except httpx.HTTPError:
-        logger.exception("Échec d'envoi du SMS vers %s", phone)
+        masked = f"***{phone[-4:]}" if len(phone) >= 4 else "***"
+        logger.exception("Échec d'envoi du SMS vers %s", masked)
         return False
 
 
