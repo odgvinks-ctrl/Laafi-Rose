@@ -2,10 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import CORS_ORIGINS
-from app.core.database import Base, engine
 from app.routes import appointments, auth, health_centers, notifications, services, users
 
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Laafi Rose · Backend", version="0.1.0")
 
