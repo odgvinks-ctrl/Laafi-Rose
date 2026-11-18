@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { Link, Navigate, NavLink, Outlet, useLocation } from "react-router-dom";
-import { House, BookOpen, MapPin, MessageCircle, Download, NotebookPen, Bell, UserRound, Stethoscope } from "lucide-react";
+import { House, BookOpen, MapPin, MessageCircle, Download, NotebookPen, Bell, UserRound, Stethoscope, HandHeart, AlarmClock, ClipboardList, Building2, ShieldCheck, BriefcaseMedical } from "lucide-react";
 import Logo from "./Logo.jsx";
 import { devise } from "../data/marque.js";
 import BandeHorsConnexion from "./BandeHorsConnexion.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { usePreferences } from "../context/PreferencesContext.jsx";
+import { estAdmin, estPro, peutGererCentre } from "../utils/roles.js";
+import { notifierRappelsEchus } from "../utils/rappels.js";
 import "./Layout.css";
 
 const onglets = [
@@ -17,10 +19,20 @@ const onglets = [
 ];
 
 const liensPerso = [
+  { vers: "/autopalpation", libelle: "Autopalpation guidée", Icone: HandHeart },
+  { vers: "/rappels", libelle: "Mes rappels", Icone: AlarmClock },
   { vers: "/journal", libelle: "Mon journal", Icone: NotebookPen },
   { vers: "/notifications", libelle: "Notifications", Icone: Bell },
   { vers: "/profil", libelle: "Profil et préférences", Icone: UserRound },
 ];
+
+function liensProDe(user) {
+  const liens = [];
+  if (estPro(user)) liens.push({ vers: "/pro", libelle: "Demandes de rendez-vous", Icone: ClipboardList, exact: true });
+  if (peutGererCentre(user)) liens.push({ vers: "/pro/centre", libelle: "Mon centre", Icone: Building2 });
+  if (estAdmin(user)) liens.push({ vers: "/admin", libelle: "Administration", Icone: ShieldCheck });
+  return liens;
+}
 
 function classeLien({ isActive }) {
   return isActive ? "lien-nav actif" : "lien-nav";
@@ -31,10 +43,15 @@ export default function Layout() {
   const { user } = useAuth();
 
   const { preferences } = usePreferences();
+  const liensPro = liensProDe(user);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    notifierRappelsEchus();
+  }, []);
 
   if (!preferences.introVue) {
     return <Navigate to="/bienvenue" replace />;
@@ -61,6 +78,18 @@ export default function Layout() {
               <span>{libelle}</span>
             </NavLink>
           ))}
+          {liensPro.length > 0 && (
+            <>
+              <span className="menu-separateur" />
+              <span className="menu-groupe">Espace professionnel</span>
+              {liensPro.map(({ vers, libelle, Icone, exact }) => (
+                <NavLink key={vers} to={vers} end={exact} className={classeLien}>
+                  <Icone size={20} />
+                  <span>{libelle}</span>
+                </NavLink>
+              ))}
+            </>
+          )}
         </nav>
         <div className="menu-pied">
           <div className="menu-rappel">
@@ -82,6 +111,11 @@ export default function Layout() {
             <Logo />
           </Link>
           <div className="en-tete-actions">
+            {liensPro.length > 0 && (
+              <Link to="/pro" className="en-tete-bouton en-tete-pro" aria-label="Espace professionnel">
+                <BriefcaseMedical size={20} />
+              </Link>
+            )}
             <Link to="/notifications" className="en-tete-bouton" aria-label="Notifications">
               <Bell size={20} />
             </Link>

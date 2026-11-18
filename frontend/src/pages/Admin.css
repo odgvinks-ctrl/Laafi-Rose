@@ -1,0 +1,148 @@
+.admin-onglets {
+  max-width: 420px;
+  margin: 24px 0 20px;
+}
+
+.admin-onglets button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.admin-barre {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.admin-barre .btn-principal {
+  align-self: flex-start;
+}
+
+.admin-erreur {
+  margin-bottom: 16px;
+}
+
+.admin-squelette {
+  height: 320px;
+}
+
+.admin-formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.admin-formulaire-haut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-formulaire h2 {
+  font-family: "Nunito Variable", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--prune);
+}
+
+.admin-fermer {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--sable);
+  cursor: pointer;
+}
+
+.admin-oeil {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: transparent;
+  color: var(--gris);
+  cursor: pointer;
+}
+
+.admin-champs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.admin-centre {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-centre > div:first-child,
+.admin-compte > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-centre strong,
+.admin-compte strong {
+  color: var(--prune);
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-actions > * {
+  flex: 1;
+  min-width: 140px;
+}
+
+.admin-comptes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-compte {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-compte.desactive {
+  opacity: 0.6;
+}
+
+.admin-danger {
+  color: var(--rouge);
+}
+
+@media (min-width: 640px) {
+  .admin-champs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .admin-barre {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .admin-barre .btn-principal {
+    align-self: auto;
+    flex-shrink: 0;
+  }
+}

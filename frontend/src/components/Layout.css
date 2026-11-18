@@ -40,6 +40,12 @@
   color: var(--prune);
 }
 
+.en-tete-pro {
+  background: var(--poudre);
+  border-color: var(--poudre);
+  color: var(--rose-fonce);
+}
+
 .app-contenu {
   padding-bottom: calc(var(--hauteur-nav) + env(safe-area-inset-bottom));
 }
@@ -106,8 +112,9 @@
     height: 100dvh;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
     padding: 24px 16px;
+    overflow-y: auto;
     background: var(--blanc);
     border-right: 1px solid var(--ligne);
   }
@@ -134,7 +141,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    min-height: 46px;
+    min-height: 42px;
     padding: 0 12px;
     border-radius: 12px;
     color: var(--texte-2);
@@ -149,6 +156,15 @@
     background: var(--poudre);
     color: var(--rose-fonce);
     font-weight: 700;
+  }
+
+  .menu-groupe {
+    padding: 4px 12px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gris);
   }
 
   .menu-separateur {

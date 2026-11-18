@@ -17,6 +17,11 @@ import Journal from "./pages/Journal.jsx";
 import Profil from "./pages/Profil.jsx";
 import Notifications from "./pages/Notifications.jsx";
 import SuiviDemande from "./pages/SuiviDemande.jsx";
+import Autopalpation from "./pages/Autopalpation.jsx";
+import Rappels from "./pages/Rappels.jsx";
+import ProDemandes from "./pages/ProDemandes.jsx";
+import ProCentre from "./pages/ProCentre.jsx";
+import Admin from "./pages/Admin.jsx";
 import Connexion from "./pages/Connexion.jsx";
 import NonTrouve from "./pages/NonTrouve.jsx";
 
@@ -44,6 +49,11 @@ function App() {
               <Route path="profil" element={<Profil />} />
               <Route path="notifications" element={<Notifications />} />
               <Route path="rendez-vous/:reference" element={<SuiviDemande />} />
+              <Route path="autopalpation" element={<Autopalpation />} />
+              <Route path="rappels" element={<Rappels />} />
+              <Route path="pro" element={<ProDemandes />} />
+              <Route path="pro/centre" element={<ProCentre />} />
+              <Route path="admin" element={<Admin />} />
               <Route path="*" element={<NonTrouve />} />
             </Route>
           </Routes>

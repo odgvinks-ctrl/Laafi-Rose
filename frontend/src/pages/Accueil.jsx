@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Search, MapPin, ChevronRight, ListChecks, NotebookPen, MessageCircle, Download, Stethoscope } from "lucide-react";
+import { Search, MapPin, ChevronRight, ListChecks, NotebookPen, MessageCircle, Download, Stethoscope, HandHeart, AlarmClock, BellRing, BriefcaseMedical } from "lucide-react";
 import CarteArticle from "../components/CarteArticle.jsx";
 import Encadre from "../components/Encadre.jsx";
 import { useArticles } from "../hooks/useArticles.js";
 import { useAuth } from "../context/AuthContext.jsx";
 import { prenomCourt } from "../utils/texte.js";
 import { devise } from "../data/marque.js";
+import { rappelsEchus, titreRappel } from "../utils/rappels.js";
+import { estPro } from "../utils/roles.js";
 import "./Accueil.css";
 
 const raccourcis = [
+  { vers: "/autopalpation", titre: "Autopalpation guidée", texte: "5 étapes, une fois par mois", Icone: HandHeart },
+  { vers: "/rappels", titre: "Mes rappels", texte: "Vaccins et dépistages", Icone: AlarmClock },
   { vers: "/questionnaire", titre: "Tester mes connaissances", texte: "6 questions vrai ou faux", Icone: ListChecks },
   { vers: "/journal", titre: "Mon journal", texte: "Noter comment je me sens", Icone: NotebookPen },
   { vers: "/assistant", titre: "Poser une question", texte: "Réponses tirées de fiches validées", Icone: MessageCircle },
@@ -21,6 +25,7 @@ export default function Accueil() {
   const { user } = useAuth();
   const { articles, synchro } = useArticles();
   const [recherche, setRecherche] = useState("");
+  const [echus] = useState(() => rappelsEchus());
 
   const aLaUne = articles.find((a) => a.slug === "cancer-du-sein") || articles[0];
   const autres = articles.filter((a) => a !== aLaUne).slice(0, 4);
@@ -62,6 +67,31 @@ export default function Accueil() {
           <ChevronRight size={22} />
         </Link>
       </section>
+
+      {(echus.length > 0 || estPro(user)) && (
+        <div className="accueil-alertes">
+          {echus.length > 0 && (
+            <Link to="/rappels" className="accueil-alerte">
+              <BellRing size={22} />
+              <span>
+                <strong>{echus.length === 1 ? "1 rappel aujourd'hui" : `${echus.length} rappels aujourd'hui`}</strong>
+                <span>{echus.map(titreRappel).join(" · ")}</span>
+              </span>
+              <ChevronRight size={20} />
+            </Link>
+          )}
+          {estPro(user) && (
+            <Link to="/pro" className="accueil-alerte accueil-alerte-pro">
+              <BriefcaseMedical size={22} />
+              <span>
+                <strong>Espace professionnel</strong>
+                <span>Demandes de rendez-vous de votre centre</span>
+              </span>
+              <ChevronRight size={20} />
+            </Link>
+          )}
+        </div>
+      )}
 
       <h2 className="titre-section">Accès rapide</h2>
       <div className="accueil-raccourcis">

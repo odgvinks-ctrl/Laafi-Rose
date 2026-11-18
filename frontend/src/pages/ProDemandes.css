@@ -1,0 +1,131 @@
+.pro-entete {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pro-choix-centre select {
+  min-width: 220px;
+}
+
+.pro-onglets {
+  margin: 20px 0 16px;
+}
+
+.pro-compteur {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--sable);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--prune);
+}
+
+.puce.actif .pro-compteur {
+  background: var(--rose);
+  color: var(--blanc);
+}
+
+.pro-message {
+  margin-bottom: 16px;
+}
+
+.pro-squelette {
+  height: 220px;
+}
+
+.demande {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.demande-haut {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.demande-haut > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.demande-nom {
+  font-size: 1.0625rem;
+  color: var(--prune);
+}
+
+.demande-infos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--ligne);
+  border-bottom: 1px solid var(--ligne);
+}
+
+.demande-infos dt {
+  font-size: 0.75rem;
+  color: var(--gris);
+}
+
+.demande-infos dd {
+  font-size: 0.9375rem;
+  color: var(--encre);
+}
+
+.demande-contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.demande-contact a {
+  font-weight: 700;
+  color: var(--rose-fonce);
+}
+
+.demande-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.demande-actions .btn-principal,
+.demande-actions .btn-secondaire {
+  flex: 1;
+  min-width: 130px;
+}
+
+.demande-formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--voile);
+}
+
+.demande-danger {
+  color: var(--rouge);
+  border-color: var(--rouge);
+}
+
+@media (min-width: 760px) {
+  .pro-entete {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .pro-entete .rangee {
+    align-items: flex-end;
+  }
+}

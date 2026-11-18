@@ -23,36 +23,34 @@ Le serveur de développement relaie les appels :
 
 Pour d'autres adresses, copier `.env.example` en `.env` et modifier `BACKEND_URL` et `IA_URL`.
 
-## Lancer les services en local (SQLite, sans PostgreSQL)
+## Lancer le backend en local (SQLite, sans PostgreSQL)
 
-Backend (PowerShell) :
+Dans PowerShell, depuis le dossier `backend` :
 
 ```powershell
-cd backend
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 $env:DATABASE_URL="sqlite:///./laafi.db"
 $env:JWT_SECRET="une-cle-longue-identique-pour-les-deux-services"
+alembic upgrade head
+$env:APP_ENV="demo"
+$env:DEMO_ADMIN_PASSWORD="admin-laafi-2026"
+$env:DEMO_STAFF_PASSWORD="soignant-laafi-2026"
+$env:DEMO_CENTER_PASSWORD="centre-laafi-2026"
 python seed.py
 uvicorn app.main:app --reload --port 8000
 ```
 
-ai-service (autre terminal) :
+Comptes de démonstration (mots de passe = ceux choisis ci-dessus, 12 caractères minimum) :
 
-```powershell
-cd ai-service
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-$env:DATABASE_URL="sqlite:///./laafi_ai.db"
-$env:JWT_SECRET="une-cle-longue-identique-pour-les-deux-services"
-$env:ADMIN_API_KEY="cle-admin"
-python seed.py
-uvicorn app.main:app --reload --port 8001
-```
+| Numéro | Rôle | Accès |
+|---|---|---|
+| 70000000 | Administrateur | `/admin`, `/pro`, `/pro/centre` |
+| 70000001 | Soignant | `/pro` |
+| 70000002 | Accueil du centre | `/pro`, `/pro/centre` |
 
-Comptes de démonstration : `70000000 / admin12345`, `70000001 / soignant12345`, `70000002 / centre12345`.
+L'ai-service (fiches et assistant) est géré par son équipe : voir `ai-service/README.md`.
 
 ## Production
 
@@ -78,6 +76,11 @@ Le dossier `dist/` est servi par nginx (voir `deployment/nginx.conf`), qui relai
 | `/enregistres` | Contenus disponibles hors ligne |
 | `/journal` | Journal personnel (reste sur l'appareil) |
 | `/profil`, `/notifications`, `/connexion` | Compte et préférences |
+| `/autopalpation` | Guide d'autopalpation pas à pas + rappel mensuel |
+| `/rappels` | Rappels vaccins, dépistages, autopalpation (agenda .ics, notifications) |
+| `/pro` | Espace pro : demandes de rendez-vous du centre (confirmer, annuler, venue, absente) |
+| `/pro/centre` | Espace pro : informations et services du centre |
+| `/admin` | Administration : vérification des centres, comptes professionnels |
 
 ## Organisation
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { UserRound, LogOut, NotebookPen, Bell, ChevronRight, Lock, Hourglass, CalendarCheck, CalendarX } from "lucide-react";
+import { UserRound, LogOut, NotebookPen, Bell, ChevronRight, Lock, Hourglass, CalendarCheck, CalendarX, HandHeart, AlarmClock, ClipboardList, Building2, ShieldCheck } from "lucide-react";
 import Encadre from "../components/Encadre.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { usePreferences } from "../context/PreferencesContext.jsx";
@@ -8,6 +8,7 @@ import { modifierProfil } from "../api/auth.js";
 import { mesDemandes } from "../api/rendezVous.js";
 import { langues } from "../data/langues.js";
 import { dateCourte, prenomCourt } from "../utils/texte.js";
+import { estAdmin, estPro, libellesRoles, peutGererCentre, roleDe } from "../utils/roles.js";
 import "./Profil.css";
 
 const tailles = [
@@ -146,8 +147,55 @@ export default function Profil() {
         <input type="checkbox" checked={preferences.wifiSeulement} onChange={(e) => modifier("wifiSeulement", e.target.checked)} />
       </label>
 
+      {estPro(user) && (
+        <>
+          <h2 className="titre-section">Espace professionnel · {libellesRoles[roleDe(user)]}</h2>
+          <ul className="carte profil-liens">
+            <li>
+              <Link to="/pro">
+                <ClipboardList size={20} />
+                Demandes de rendez-vous
+                <ChevronRight size={18} />
+              </Link>
+            </li>
+            {peutGererCentre(user) && (
+              <li>
+                <Link to="/pro/centre">
+                  <Building2 size={20} />
+                  Mon centre
+                  <ChevronRight size={18} />
+                </Link>
+              </li>
+            )}
+            {estAdmin(user) && (
+              <li>
+                <Link to="/admin">
+                  <ShieldCheck size={20} />
+                  Administration
+                  <ChevronRight size={18} />
+                </Link>
+              </li>
+            )}
+          </ul>
+        </>
+      )}
+
       <h2 className="titre-section">Mon espace</h2>
       <ul className="carte profil-liens">
+        <li>
+          <Link to="/autopalpation">
+            <HandHeart size={20} />
+            Autopalpation guidée
+            <ChevronRight size={18} />
+          </Link>
+        </li>
+        <li>
+          <Link to="/rappels">
+            <AlarmClock size={20} />
+            Mes rappels
+            <ChevronRight size={18} />
+          </Link>
+        </li>
         <li>
           <Link to="/journal">
             <NotebookPen size={20} />

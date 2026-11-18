@@ -1,0 +1,140 @@
+.pro-entete-centre {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.pro-entete-centre .rangee {
+  align-items: flex-end;
+}
+
+.pro-centre-squelette {
+  height: 480px;
+}
+
+.pro-centre-grille {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pro-fiche,
+.pro-services {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.pro-fiche h2,
+.pro-services h2 {
+  font-family: "Nunito Variable", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--prune);
+}
+
+.pro-champs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.pro-position {
+  align-self: flex-start;
+}
+
+.pro-services-haut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pro-ajout {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--voile);
+}
+
+.pro-liste-services li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid var(--ligne);
+}
+
+.pro-service-texte {
+  display: flex;
+  flex-direction: column;
+}
+
+.pro-service-texte strong {
+  color: var(--prune);
+}
+
+.pro-service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.interrupteur-compact {
+  gap: 10px;
+  padding: 4px 0;
+  font-size: 0.875rem;
+}
+
+.pro-poubelle {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gris);
+  cursor: pointer;
+}
+
+.pro-poubelle:hover {
+  background: var(--rouge-fond);
+  color: var(--rouge);
+}
+
+.pro-supprimer {
+  color: var(--rouge);
+}
+
+@media (min-width: 640px) {
+  .pro-champs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pro-champ-large {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 760px) {
+  .pro-entete-centre {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pro-centre-grille {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+}
